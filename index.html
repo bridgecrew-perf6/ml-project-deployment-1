@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Diabetes Prediction System</title>
+
+<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+    <!-- Custom Stylesheet-->
+    <link rel="stylesheet" href="{{ url_for('Static',filename='styles/mystyle.css') }}" />
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="http://use.fontawsome.com/releases/v5.0.8/js/all.js"></script>
+
+    <!-- Custom Scripting-->
+    <script src="{{ url_for('Static',filename='js/myscript.js') }}"></script>
+
+</head>
+
+<body  style="background:url(../Static/Images/diabetesbackground.jpg);background-size: cover;"></body>
+<body<!-- Main div -->
+        <div class="container mt-5 mb-5">
+            <div class="row">
+        
+               <!-- Left Card for Project Introduction -->
+               
+               <div class="card col-lg-7 text-  center" style="color: white; background: rgba(0, 0, 0, 0.7);">
+                    <h1 class="m-5">
+                            <strong>Diabetes Prediction System</strong>
+                          </h1>
+                          
+                          <!-- Salutaion -->
+                          <p class="ml-5" style="font-weight: bolder; color: red; text-align: left">
+                                              Asslam-o-Alaikum !</p>
+                          
+                          <!-- Instructions -->
+                          <ul class="ml-4 mr-4" style="text-align: justify">
+                          
+                            <li>Diabetes Prediction system is used to predict diabetes in patient in Pakistan. User give 
+                                different features and InshaAllah system will predict diabetes in patient.
+                            </li>
+                          
+                            <li>Of the estimated 2,224 Patient are alive, more than 1,500 died</li>
+                          
+                            <li>The main aim of this project is to predict whether a Patient has diabetes or not?</li>
+                          </ul>
+                          
+                          <!-- Read Instructions button -->
+                          <button class="btn btn-secondary mt-4" style="width: 200px; margin-left: 50px; margin-bottom: 50px" data-toggle="modal" data-target="#instructionmodal">Read Instructions
+                          </button>
+                          
+                          <p style="text-align:center">کسی نے پوچھا بساط میری
+                              <br>
+                                میں نے بولا گدائےمرشد
+                                <br>
+                                یہی ہے میری کل اثاثہ
+                                <br>
+                                نگاہ مرشد دعائے مرشد</li>
+                          </p>
+                          
+                          <p style="text-align:center">اگر دنیا میں کسی نے کوئی کام کیا ہے تو آپ بھی کر 
+                                سکتے ہیں</p>
+               </div>
+        
+               <!-- Right Card for System Inputs -->
+               <div class="col-lg-5 text-center" style="background: rgba(247, 223, 227, 0.7)">
+                    <div>
+                     <h2 class="m-5" style="color: black">
+                        <strong>Predict Diabetes </strong>
+                      </h2>
+                    </div>
+            
+                    <div id="inputs-form">
+                      <form action="/" method="POST">
+
+                        <!-- Pregnancy Input -->
+                        <div class="form-group row">
+                          <label class="col-lg-4 col-4 offset-lg-1 col-form-label" style="font-weight: bolder; 
+                            font-size: large">
+                            Pregnancy:
+                          </label>
+                          <div class="col-lg-6 col-xl-5 col-6">
+                            <input type="number" min="0" max="1100" name="pregnancy" id="pregnancy" style="
+                            text-align: center;
+                            width: 100%;
+                            border-radius: 25px;
+                            background: rgb(0, 0, 0, 0.5);
+                            border-width: 3px;
+                            border-color: #560caa;
+                            color: white;
+                            height: 40px;" required="required" oninput="checkInput(this)">
+                          </div>
+                        </div>
+            
+                        <!-- Glucose Input -->
+                        <div class="form-group row">
+                          <label class="col-lg-4 col-4 offset-lg-1 col-form-label" style="
+                          font-weight: bolder;
+                          font-size: large">
+                            Glucose :
+                          </label>
+                          <div class="col-lg-6 col-xl-5 col-6">
+                            <input type="number" min="0" max="1100" name="glucose " id="glucose " required="required" style="
+                            text-align: center;
+                            width: 100%;
+                            border-radius: 25px;
+                            background: rgb(0, 0, 0, 0.5);
+                            border-width: 3px;
+                            border-color: #560caa;
+                            color: white;
+                            height: 40px;" oninput="checkInput(this)">
+                          </div>
+                        </div>
+
+                        <!-- BloodPressure Input -->
+                        <div class="form-group row">
+                           <label class="col-lg-4 col-4 offset-lg-1 col-form-label" style="
+                           font-weight: bolder;
+                           font-size: large">
+                             BloodPressure:
+                           </label>
+                           <div class="col-lg-6 col-xl-5 col-6">
+                             <input type="number" min="0" max="1100" name="bloodPressure " id="bloodPressure " required="required" style="
+                             text-align: center;
+                             width: 100%;
+                             border-radius: 25px;
+                             background: rgb(0, 0, 0, 0.5);
+                             border-width: 3px;
+                             border-color: #560caa;
+                             color: white;
+                             height: 40px;" oninput="checkInput(this)">
+                           </div>
+                         </div>
+
+                         <!-- SkinThickness Input -->
+                        <div class="form-group row">
+                           <label class="col-lg-4 col-4 offset-lg-1 col-form-label" style="
+                           font-weight: bolder;
+                           font-size: large">
+                             SkinThickness :
+                           </label>
+                           <div class="col-lg-6 col-xl-5 col-6">
+                             <input type="number" min="0" max="1100" name="skinThickness " id="skinThickness " required="required" style="
+                             text-align: center;
+                             width: 100%;
+                             border-radius: 25px;
+                             background: rgb(0, 0, 0, 0.5);
+                             border-width: 3px;
+                             border-color: #560caa;
+                             color: white;
+                             height: 40px;" oninput="checkInput(this)">
+                           </div>
+                         </div>
+
+                         <!-- Insulin Input -->
+                        <div class="form-group row">
+                           <label class="col-lg-4 col-4 offset-lg-1 col-form-label" style="
+                           font-weight: bolder;
+                           font-size: large">
+                             Insulin :
+                           </label>
+                           <div class="col-lg-6 col-xl-5 col-6">
+                             <input type="number" min="0" max="1100" name="insulin " id="insulin " required="required" style="
+                             text-align: center;
+                             width: 100%;
+                             border-radius: 25px;
+                             background: rgb(0, 0, 0, 0.5);
+                             border-width: 3px;
+                             border-color: #560caa;
+                             color: white;
+                             height: 40px;" oninput="checkInput(this)">
+                           </div>
+                         </div>
+
+                         <!-- Age Input -->
+                        <div class="form-group row">
+                           <label class="col-lg-4 col-4 offset-lg-1 col-form-label" style="
+                           font-weight: bolder;
+                           font-size: large">
+                             Age:
+                           </label>
+                           <div class="col-lg-6 col-xl-5 col-6">
+                             <input type="number" min="0" max="1100" name="age " id="age " required="required" style="
+                             text-align: center;
+                             width: 100%;
+                             border-radius: 25px;
+                             background: rgb(0, 0, 0, 0.5);
+                             border-width: 3px;
+                             border-color: #560caa;
+                             color: white;
+                             height: 40px;" oninput="checkInput(this)">
+                           </div>
+                         </div>
+            
+                        <!-- Predict Button -->
+                        <div class="form-group row mt-5">
+                          <div class="col-lg-8 offset-lg-2 col-9 offset-1 mb-5">
+                            <button type="submit" class="btn btn-success" id="calculateButton" style="width: 100%">
+                              Predict Diabetes
+                            </button>
+                          </div>
+                        </div>
+<!-- Instruction Modal -->
+<div class="modal fade" id="instructionmodal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title" style="margin-left: 35%">
+               <strong>Instructions</strong>
+           </h4>
+           
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+           </button>
+           
+         </div>
+         
+   <div class="modal-body">
+            <div class="modal-body">
+         <div class="w-100 text-center" style="background: #009cff; color: white; height: 50px">
+           <h5 style="padding-top: 10px">Input Attributes Details</h5>
+         </div>
+
+         <!-- Collapsable System Input Attributes in Instruction Modal -->
+         <div id="accordion">
+
+           <div class="card mt-1" style="background: rgb(173, 170, 170)">
+             <div class="card-header" id="matricheading" style="
+         display: inline-flex;
+         height: 40px;
+         align-content: center;
+         cursor: pointer;
+       " data-toggle="collapse" data-target="#matriccollapse" aria-expanded="false" aria-controls="collapseOne">
+               <i class="fa fa-plus-circle">
+                 <b class="ml-3" style="font-family: sans-serif">Pregnancy</b>
+               </i>
+             </div>
+
+             <div id="matriccollapse" class="collapse" aria-labelledby="matricheading" style="background: white"
+               data-parent="#accordion">
+               <div class="card-body">
+                 Possible Values of Pregnancy are :
+                 <ul>
+                   <li>The Pregnancy level of the female Patient should range between 0 to 100</li>
+                 </ul>
+               </div>
+             </div>
+           </div>
+
+           <div class="card mt-1" style="background: rgb(173, 170, 170)">
+             <div class="card-header" id="fscheading" style="
+         display: inline-flex;
+         height: 40px;
+         align-content: center;
+         cursor: pointer;
+       " data-toggle="collapse" data-target="#fsccollapse" aria-expanded="false" aria-controls="collapseOne">
+               <i class="fa fa-plus-circle">
+                 <b class="ml-3" style="font-family: sans-serif">Glucose</b>
+               </i>
+             </div>
+
+             <div id="fsccollapse" class="collapse" aria-labelledby="fscheading" style="background: white"
+               data-parent="#accordion">
+               <div class="card-body">
+                 Possible Values of Glucose are :
+                 <ul>
+                   <li>The Glucose level of the Female Patient should range between 70 to 180</li>
+                 </ul>
+               </div>
+             </div>
+           </div>
+           <div class="card mt-1" style="background: rgb(173, 170, 170)">
+            <div class="card-header" id="fscheading" style="
+        display: inline-flex;
+        height: 40px;
+        align-content: center;
+        cursor: pointer;
+      " data-toggle="collapse" data-target="#fsccollapse" aria-expanded="false" aria-controls="collapseOne">
+              <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">BloodPressure</b>
+              </i>
+            </div>
+
+            <div id="fsccollapse" class="collapse" aria-labelledby="fscheading" style="background: white"
+              data-parent="#accordion">
+              <div class="card-body">
+                Possible Values of Glucose are :
+                <ul>
+                  <li>The BloodPressure level of the  Patient should range between 0 to 120</li>
+                </ul>
+              </div>
+            </div>
+         </div>
+         
+         <div class="card mt-1" style="background: rgb(173, 170, 170)">
+            <div class="card-header" id="fscheading" style="
+        display: inline-flex;
+        height: 40px;
+        align-content: center;
+        cursor: pointer;
+      " data-toggle="collapse" data-target="#fsccollapse" aria-expanded="false" aria-controls="collapseOne">
+              <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">SkinThickness</b>
+              </i>
+            </div>
+
+            <div id="fsccollapse" class="collapse" aria-labelledby="fscheading" style="background: white"
+              data-parent="#accordion">
+              <div class="card-body">
+                Possible Values of SkinThickness are :
+                <ul>
+                  <li>The SkinThickness level of the Female Patient should range between 0 to 100</li>
+                </ul>
+              </div>
+            </div>
+         </div>
+         <div class="card mt-1" style="background: rgb(173, 170, 170)">
+            <div class="card-header" id="fscheading" style="
+        display: inline-flex;
+        height: 40px;
+        align-content: center;
+        cursor: pointer;
+      " data-toggle="collapse" data-target="#fsccollapse" aria-expanded="false" aria-controls="collapseOne">
+              <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Insulin</b>
+              </i>
+            </div>
+
+            <div id="fsccollapse" class="collapse" aria-labelledby="fscheading" style="background: white"
+              data-parent="#accordion">
+              <div class="card-body">
+                Possible Values of Insulin are :
+                <ul>
+                  <li>The Insulin level of the Female Patient should range between 0 to 1000</li>
+                </ul>
+              </div>
+            </div>
+         </div>
+
+         <div class="card mt-1" style="background: rgb(173, 170, 170)">
+            <div class="card-header" id="fscheading" style="
+        display: inline-flex;
+        height: 40px;
+        align-content: center;
+        cursor: pointer;
+      " data-toggle="collapse" data-target="#fsccollapse" aria-expanded="false" aria-controls="collapseOne">
+              <i class="fa fa-plus-circle">
+                <b class="ml-3" style="font-family: sans-serif">Age</b>
+              </i>
+            </div>
+
+            <div id="fsccollapse" class="collapse" aria-labelledby="fscheading" style="background: white"
+              data-parent="#accordion">
+              <div class="card-body">
+                Possible Values of Insulin are :
+                <ul>
+                  <li>The Age of the Female Patient should range between 1 to 100</li>
+                </ul>
+              </div>
+            </div>
+         </div>
+         
+
+      </div>
+      <div class="w-100 text-center mt-3" style="background: #009cff; color: white; height: 50px">
+         <h5 style="padding-top: 10px">Steps to Follow</h5>
+       </div>
+
+       <!-- Steps of Prediction -->
+       <div class="mt-3 ml-3">
+         <span style="font-weight: bolder">Step 1 : </span> Enter
+         Marks in
+         <span style="font-weight: bolder; color: #009cff">Pregnanct, Glucose, BloodPressure, SkinThickness, Insulin & age
+         of Female Patient </span><br />
+         <span style="font-weight: bolder">Step 2 : </span> Click on
+         <span style="font-weight: bolder; color: #009cff">Predict Diabetes</span>
+         Button<br />
+         <span style="font-weight: bolder">Step 3 : </span>
+         Our Diabetes Prediction System will predict whether 
+         <span style="font-weight: bolder; color: green">the Patient have DIABETES or NOT</span>
+       </div>
+     </div>
+
+     <!-- Result Modal -->
+<div class="modal fade" id="resultmodal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+         <h4 class="modal-title" style="margin-left: 26%; margin-right: 17%">
+            <strong>Prediction of Model</strong>
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        
+        </div>
+        <div class="modal-body text-center">
+         <button class="btn btn-success" type="button" data-toggle="collapse"
+         data-target=".multi-collapse" aria-expanded="false"
+         aria-controls="multiCollapseExample1 multiCollapseExample2" id="inputhandler">
+         Click to view inputs
+     </button>
+     <!-- Display of inputs Prediction Result Modal -->
+     <div class="row mt-3">
+      <div class="col-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample1">
+          <div class="card">
+            <div class="card-header" style="background-color: #009cff; color: white">
+              <strong>Pregnancies</strong>
+            </div>
+            <div class="card-body">{{pregnancies}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card">
+            <div class="card-header" style="background-color: #009cff; color: white">
+              <strong>Glucose</strong>
+            </div>
+            <div class="card-body">{{glucose}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card">
+            <div class="card-header" style="background-color: #009cff; color: white">
+              <strong>BloodPressure</strong>
+            </div>
+            <div class="card-body">{{bloodPreessure}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card">
+            <div class="card-header" style="background-color: #009cff; color: white">
+              <strong>SkinThickness</strong>
+            </div>
+            <div class="card-body">{{skinThickness}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card">
+            <div class="card-header" style="background-color: #009cff; color: white">
+              <strong>Insulin</strong>
+            </div>
+            <div class="card-body">{{insulin}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="collapse multi-collapse" id="multiCollapseExample2">
+          <div class="card">
+            <div class="card-header" style="background-color: #009cff; color: white">
+              <strong>Age</strong>
+            </div>
+            <div class="card-body">{{age}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3 collapse multi-collapse">
+      <i class="fa fa-arrow-down" style="padding-left: 43%; font-size: 70px"></i>
+    </div>
+
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+   </div>
+</div>
+
+
+
+                      </form>
+                    </div>
+              </div>
+        
+             </div>
+        </div>
+        
+</body>
+ <script>
+// Handle Pregnancy collapse on click
+$("#Pregnancycheading").click(function () {
+      if ($("#Pregnancycheading").attr("aria-expanded") == "false") {
+        $("#Pregnancycheading i").removeClass("fa-plus-circle");
+        $("#Pregnancycheading i").addClass("fa-minus-circle");
+      }
+      if ($("#Pregnancycheading").attr("aria-expanded") == "true") {
+        $("#Pregnancycheading i").removeClass("fa-minus-circle");
+        $("#Pregnancycheading i").addClass("fa-plus-circle");
+      }
+    });
+
+    // Handle Glucose collapse on click
+    $("#Glucosecheading").click(function () {
+      if ($("#Glucosecheading").attr("aria-expanded") == "false") {
+        $("#Glucosecheading i").removeClass("fa-plus-circle");
+        $("#Glucosecheadingi").addClass("fa-minus-circle");
+      }
+      if ($("#Glucosecheading").attr("aria-expanded") == "true") {
+        $("#Glucosecheadingi").removeClass("fa-minus-circle");
+        $("#Glucosecheading i").addClass("fa-plus-circle");
+      }
+    });
+
+// Handle BloodPreessure collapse on click
+$("#BloodPreessure cheading").click(function () {
+      if ($("#BloodPreessure ").attr("aria-expanded") == "false") {
+        $("#BloodPreessure  i").removeClass("fa-plus-circle");
+        $("#BloodPreessure  i").addClass("fa-minus-circle");
+      }
+      if ($("#BloodPreessure ").attr("aria-expanded") == "true") {
+        $("#BloodPreessure  i").removeClass("fa-minus-circle");
+        $("#BloodPreessure i").addClass("fa-plus-circle");
+      }
+    });
+
+    // Handle SkinThickness collapse on click
+    $("#SkinThicknesscheading").click(function () {
+      if ($("#SkinThicknesscheading").attr("aria-expanded") == "false") {
+        $("#SkinThicknesscheadingi").removeClass("fa-plus-circle");
+        $("#SkinThicknesscheadingi").addClass("fa-minus-circle");
+      }
+      if ($("#SkinThicknesscheading").attr("aria-expanded") == "true") {
+        $("#SkinThicknesscheadingi").removeClass("fa-minus-circle");
+        $("#SkinThicknesscheadingi").addClass("fa-plus-circle");
+      }
+    });
+
+ // Handle Insulin collapse on click
+ $("#Insulincheading").click(function () {
+      if ($("#Insulincheading").attr("aria-expanded") == "false") {
+        $("#Insulincheading i").removeClass("fa-plus-circle");
+        $("#Insulincheadingi").addClass("fa-minus-circle");
+      }
+      if ($("#Insulincheading").attr("aria-expanded") == "true") {
+        $("#Insulincheading i").removeClass("fa-minus-circle");
+        $("#Insulincheading i").addClass("fa-plus-circle");
+      }
+    });
+
+    // Handle Age collapse on click
+ $("#Agecheading").click(function () {
+      if ($("#Agecheading").attr("aria-expanded") == "false") {
+        $("#Agecheading i").removeClass("fa-plus-circle");
+        $("#Agecheading i").addClass("fa-minus-circle");
+      }
+      if ($("#Agecheading").attr("aria-expanded") == "true") {
+        $("#Agecheadingi").removeClass("fa-minus-circle");
+        $("#Agecheadingi").addClass("fa-plus-circle");
+      }
+    });
+
+    // Handle Display of inputs on result modal
+    $("#inputhandler").click(function () {
+      if ($("#inputhandler").attr("aria-expanded") == "false") {
+        document.getElementById("inputhandler").innerText =
+          "Click to minimize inputs";
+        $("#inputhandler").removeClass("btn-success");
+        $("#inputhandler").addClass("btn-secondary");
+      }
+      if ($("#inputhandler").attr("aria-expanded") == "true") {
+        document.getElementById("inputhandler").innerText =
+          "Click to view inputs";
+        $("#inputhandler").removeClass("btn-secondary");
+        $("#inputhandler").addClass("btn-success");
+      }
+    });
+
+    // Handling of Result modal to be displayed
+window.onload = function () {
+    if (document.getElementById("result").innerText) {
+        $("#resultmodal").modal("show");
+    }
+};
+
+ </script>   
+ </body>
+
+ </html>
